@@ -28,11 +28,11 @@ extern int largeTableEnterNum;
 
 void homePage() {
     while (1) {
-        printf("##########é¤é¥®ä¸šæ’é˜Ÿå«å·ç³»ç»Ÿ##########\n");
-        printf("1. å–å·\n");
-        printf("2. å€™é¤äººæ•°\n");
-        printf("3. ç®¡ç†åå°\n");
-        printf("0. é€€å‡º\n");
+        printf("##########²ÍÒûÒµÅÅ¶Ó½ĞºÅÏµÍ³##########\n");
+        printf("1. È¡ºÅ\n");
+        printf("2. ºò²ÍÈËÊı\n");
+        printf("3. ¹ÜÀíºóÌ¨\n");
+        printf("0. ÍË³ö\n");
         printf("###################################\n");
         int cmd = 0;
         scanf("%d", &cmd);
@@ -51,7 +51,7 @@ void homePage() {
                 return;
             default:
                 printf("-----------------\n");
-                printf(" è¾“å…¥æœ‰è¯¯ï¼Œé‡æ–°è¾“å…¥\n");
+                printf(" ÊäÈëÓĞÎó£¬ÖØĞÂÊäÈë\n");
                 printf("-----------------\n");
         }
     }
@@ -59,25 +59,25 @@ void homePage() {
 
 void managePage() {
     while (1) {
-        printf("##########ç®¡ç†ç•Œé¢##########\n");
-        printf("1. æŸ¥çœ‹å®æ—¶é¤ä½ä½¿ç”¨æƒ…å†µ\n");
-        printf("2. æŸ¥çœ‹è¿‘æ—¥é¤ä½ä½¿ç”¨æƒ…å†µ\n");
-        printf("3. æ¸…ç†æ¡Œå­\n");
-        printf("4. ç«‹åˆ»å¯¼å‡ºä»Šæ—¥æ•°æ® (æµ‹è¯•ç”¨, ä¼šé‡ç½®ç»Ÿè®¡æ•°æ®)\n");
-        printf("0. è¿”å›\n");
+        printf("##########¹ÜÀí½çÃæ##########\n");
+        printf("1. ²é¿´ÊµÊ±²ÍÎ»Ê¹ÓÃÇé¿ö\n");
+        printf("2. ²é¿´½üÈÕ²ÍÎ»Ê¹ÓÃÇé¿ö\n");
+        printf("3. ÇåÀí×À×Ó\n");
+        printf("4. Á¢¿Ìµ¼³ö½ñÈÕÊı¾İ (²âÊÔÓÃ, »áÖØÖÃÍ³¼ÆÊı¾İ)\n");
+        printf("0. ·µ»Ø\n");
         printf("###########################\n");
         int cmd = 0;
         scanf("%d", &cmd);
         switch (cmd) {
             case 1: {
-                printf("##########å®æ—¶ä½¿ç”¨æƒ…å†µ##########\n");
-                printf("åº—å†…æ¡Œæ•°: %d\n", SMALL_TABLE_QUEUE.size + MID_TABLE_QUEUE.size + LARGE_TABLE_QUEUE.size);
-                printf("ä½¿ç”¨ || å°æ¡Œ: %d \t ä¸­æ¡Œ: %d \t å¤§æ¡Œ: %d\n", SMALL_TABLE_QUEUE.size, MID_TABLE_QUEUE.size,
+                printf("##########ÊµÊ±Ê¹ÓÃÇé¿ö##########\n");
+                printf("µêÄÚ×ÀÊı: %d\n", SMALL_TABLE_QUEUE.size + MID_TABLE_QUEUE.size + LARGE_TABLE_QUEUE.size);
+                printf("Ê¹ÓÃ || Ğ¡×À: %d \t ÖĞ×À: %d \t ´ó×À: %d\n", SMALL_TABLE_QUEUE.size, MID_TABLE_QUEUE.size,
                        LARGE_TABLE_QUEUE.size);
-                printf("ç©ºé—² || å°æ¡Œ: %d \t ä¸­æ¡Œ: %d \t å¤§æ¡Œ: %d\n", (10 - SMALL_TABLE_QUEUE.size),
+                printf("¿ÕÏĞ || Ğ¡×À: %d \t ÖĞ×À: %d \t ´ó×À: %d\n", (10 - SMALL_TABLE_QUEUE.size),
                        (20 - MID_TABLE_QUEUE.size), (3 - LARGE_TABLE_QUEUE.size));
                 printf("---\n");
-                printf("å€™é¤äººæ•°: %d\n",
+                printf("ºò²ÍÈËÊı: %d\n",
                        SMALL_TABLE_USER_QUEUE.size + MID_TABLE_USER_QUEUE.size + LARGE_TABLE_USER_QUEUE.size);
                 printf("##############################\n");
             }
@@ -97,13 +97,13 @@ void managePage() {
                     }
                     closedir(folder);
                 } else {
-                    perror("æ‰“å¼€ç›®å½•å¤±è´¥");
+                    perror("´ò¿ªÄ¿Â¼Ê§°Ü");
                     break;
                 }
 
                 if (fileCount == 0) {
-                    printf("æš‚æ— ç»Ÿè®¡æ•°æ®æ–‡ä»¶\n");
-                    printf("0. è¿”å›\n");
+                    printf("ÔİÎŞÍ³¼ÆÊı¾İÎÄ¼ş\n");
+                    printf("0. ·µ»Ø\n");
                     getchar();
                     getchar();
                     break;
@@ -114,14 +114,14 @@ void managePage() {
                     sprintf(fileName, "%s/%s", path, files[i]);
                     FILE *fp = fopen(fileName, "rb");
                     if (fp == NULL) {
-                        printf("æ‰“å¼€æ–‡ä»¶å¤±è´¥");
+                        printf("´ò¿ªÎÄ¼şÊ§°Ü");
                         break;
                     }
                     Data data;
                     fread(&data, sizeof(Data), 1, fp);
                     fclose(fp);
-//                    printf("%s:\n è¿›åº—äººæ•°: %d, æ€»äººæ•°: %d | æ¡Œæ•° å°æ¡Œ: %d, ä¸­æ¡Œ: %d, å¤§æ¡Œ: %d | å…¥åº§äººæ•° å°æ¡Œ: %d, ä¸­æ¡Œ: %d, å¤§æ¡Œ: %d | ä¸Šåº§ç‡ å°æ¡Œ: %.2lf, ä¸­æ¡Œ: %.2lf, å¤§æ¡Œ: %.2lf\n",
-                    printf("%s:\n è¿›åº—äººæ•°: %d, æ€»äººæ•°: %d | ä¸Šåº§ç‡ å°æ¡Œ: %.2lf, ä¸­æ¡Œ: %.2lf, å¤§æ¡Œ: %.2lf\n",
+//                    printf("%s:\n ½øµêÈËÊı: %d, ×ÜÈËÊı: %d | ×ÀÊı Ğ¡×À: %d, ÖĞ×À: %d, ´ó×À: %d | Èë×ùÈËÊı Ğ¡×À: %d, ÖĞ×À: %d, ´ó×À: %d | ÉÏ×ùÂÊ Ğ¡×À: %.2lf, ÖĞ×À: %.2lf, ´ó×À: %.2lf\n",
+                    printf("%s:\n ½øµêÈËÊı: %d, ×ÜÈËÊı: %d | ÉÏ×ùÂÊ Ğ¡×À: %.2lf, ÖĞ×À: %.2lf, ´ó×À: %.2lf\n",
                            files[i], data.enterNum, data.totalNum,
                            data.smallTableNum == 0 ? 0 : data.smallTableEnterNum /
                                                          (double) (data.smallTableNum * SMALL_TABLE_CAPACITY),
@@ -131,7 +131,7 @@ void managePage() {
                                                          (double) (data.largeTableNum * LARGE_TABLE_CAPACITY));
                 }
                 printf("==========\n");
-                printf("0. è¿”å›\n");
+                printf("0. ·µ»Ø\n");
                 getchar();
                 getchar();
                 break;
@@ -159,7 +159,7 @@ void managePage() {
                 return;
             default: {
                 printf("-----------------\n");
-                printf(" è¾“å…¥æœ‰è¯¯ï¼Œé‡æ–°è¾“å…¥\n");
+                printf(" ÊäÈëÓĞÎó£¬ÖØĞÂÊäÈë\n");
                 printf("-----------------\n");
             }
         }
@@ -167,25 +167,25 @@ void managePage() {
 }
 
 void statusPage() {
-    printf("##########å€™é¤äººæ•°##########\n");
-    printf("å°æ¡Œ: %d æ¡Œ\n", SMALL_TABLE_USER_QUEUE.size);
-    printf("ä¸­æ¡Œ: %d æ¡Œ\n", MID_TABLE_USER_QUEUE.size);
-    printf("å¤§æ¡Œ: %d æ¡Œ\n", LARGE_TABLE_USER_QUEUE.size);
+    printf("##########ºò²ÍÈËÊı##########\n");
+    printf("Ğ¡×À: %d ×À\n", SMALL_TABLE_USER_QUEUE.size);
+    printf("ÖĞ×À: %d ×À\n", MID_TABLE_USER_QUEUE.size);
+    printf("´ó×À: %d ×À\n", LARGE_TABLE_USER_QUEUE.size);
     printf("###########################\n");
-    printf("0. è¿”å›\n");
+    printf("0. ·µ»Ø\n");
     getchar();
     getchar();
 }
 
 void takeTokenPage() {
     Customer customer;
-    printf("###########å–å·ç•Œé¢##########\n");
+    printf("###########È¡ºÅ½çÃæ##########\n");
     while (1) {
-        printf("è¯·è¾“å…¥å°±é¤äººæ•°ï¼š\n");
+        printf("ÇëÊäÈë¾Í²ÍÈËÊı£º\n");
         int memNum = 0;
         scanf("%d", &memNum);
         if (memNum < 0 || memNum > LARGE_TABLE_CAPACITY) {
-            printf("æ ¼å¼æœ‰è¯¯, è¯·é‡æ–°è¾“å…¥, æˆ–è¾“å…¥ 0 é€€å‡º\n");
+            printf("¸ñÊ½ÓĞÎó, ÇëÖØĞÂÊäÈë, »òÊäÈë 0 ÍË³ö\n");
             continue;
         }
         if (memNum == 0) {
@@ -202,7 +202,7 @@ void takeTokenPage() {
         break;
     }
     while (1) {
-        printf("è¯·è¾“å…¥è”ç³»æ–¹å¼ï¼š\n");
+        printf("ÇëÊäÈëÁªÏµ·½Ê½£º\n");
         char telephoneNum[11] = {0};
         scanf("%s", telephoneNum);
         if (strcmp("0", telephoneNum) == 0) {
@@ -212,7 +212,7 @@ void takeTokenPage() {
             customer.phoneNumber = telephoneNum;
             break;
         }
-        printf("æ ¼å¼æœ‰è¯¯, è¯·é‡æ–°è¾“å…¥, æˆ–è¾“å…¥ 0 é€€å‡º\n");
+        printf("¸ñÊ½ÓĞÎó, ÇëÖØĞÂÊäÈë, »òÊäÈë 0 ÍË³ö\n");
     }
     int waitNum = 0;
     switch (customer.type) {
@@ -231,7 +231,7 @@ void takeTokenPage() {
     }
     char lastFourNum[4] = {};
     strncpy(lastFourNum, &customer.phoneNumber[7], 0);
-    printf("äº²çˆ±çš„ %s, æ‚¨å·²å–å·æˆåŠŸ, è¯·è€å¿ƒç­‰å¾…, å‰é¢è¿˜æœ‰ %d æ¡Œ\n", lastFourNum, waitNum);
+    printf("Ç×°®µÄ %s, ÄúÒÑÈ¡ºÅ³É¹¦, ÇëÄÍĞÄµÈ´ı, Ç°Ãæ»¹ÓĞ %d ×À\n", lastFourNum, waitNum);
     takeTable(customer.type);
     totalNum += customer.memNum;
 }

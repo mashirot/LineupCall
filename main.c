@@ -28,12 +28,12 @@ int main() {
     initQueue(&MID_TABLE_USER_QUEUE);
     initQueue(&LARGE_TABLE_USER_QUEUE);
     if (pthread_create(&thread, NULL, timer_thread, NULL)) {
-        fprintf(stderr, "çº¿ç¨‹åˆ›å»ºå¤±è´¥\n");
+        fprintf(stderr, "Ïß³Ì´´½¨Ê§°Ü\n");
         return 0;
     }
     homePage();
     if (pthread_detach(thread)) {
-        fprintf(stderr, "çº¿ç¨‹ç»“æŸå¤±è´¥\n");
+        fprintf(stderr, "Ïß³Ì½áÊøÊ§°Ü\n");
     }
     return 0;
 }

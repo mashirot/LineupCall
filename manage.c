@@ -28,7 +28,7 @@ void takeTable(int tableType) {
             }
             Customer sCustomer = *(Customer *) poll(&SMALL_TABLE_USER_QUEUE);
             int sId = generateId(SMALL_TABLE, &SMALL_TABLE_QUEUE);
-            inform(sCustomer.phoneNumber, "Â∞èÊ°å", sId);
+            inform(sCustomer.phoneNumber, "–°◊¿", sId);
             Table smallTable;
             smallTable.id = sId;
             offer(&SMALL_TABLE_QUEUE, &smallTable, sizeof(Table));
@@ -43,7 +43,7 @@ void takeTable(int tableType) {
             }
             Customer mCustomer = *(Customer *) poll(&MID_TABLE_USER_QUEUE);
             int mId = generateId(MID_TABLE, &MID_TABLE_QUEUE);
-            inform(mCustomer.phoneNumber, "‰∏≠Ê°å", mId);
+            inform(mCustomer.phoneNumber, "÷–◊¿", mId);
             Table midTable;
             midTable.id = mId;
             offer(&MID_TABLE_QUEUE, &midTable, sizeof(Table));
@@ -58,7 +58,7 @@ void takeTable(int tableType) {
             }
             Customer lCustomer = *(Customer *) poll(&LARGE_TABLE_USER_QUEUE);
             int lID = generateId(LARGE_TABLE, &LARGE_TABLE_QUEUE);
-            inform(lCustomer.phoneNumber, "Â§ßÊ°å", lID);
+            inform(lCustomer.phoneNumber, "¥Û◊¿", lID);
             Table largeTable;
             largeTable.id = lID;
             offer(&LARGE_TABLE_QUEUE, &largeTable, sizeof(Table));

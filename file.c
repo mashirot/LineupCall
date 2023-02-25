@@ -16,18 +16,18 @@ extern int largeTableEnterNum;
 extern pthread_t thread;
 
 void output() {
-    // è·å–å½“å‰æ—¶é—´
+    // »ñÈ¡µ±Ç°Ê±¼ä
     time_t t = time(NULL);
     struct tm *now = localtime(&t);
     char filename[20];
-    // å°†å½“å‰æ—¶é—´æ ¼å¼åŒ–ä¸º yyyy_MM_dd
+    // ½«µ±Ç°Ê±¼ä¸ñÊ½»¯Îª yyyy_MM_dd
     sprintf(filename, "./Data/%04d_%02d_%02d.dat", now->tm_year + 1900, now->tm_mon + 1, now->tm_mday);
-    // åˆ›å»º Data æ–‡ä»¶å¤¹
+    // ´´½¨ Data ÎÄ¼ş¼Ğ
     mkdir("./Data");
-    // æ‰“å¼€æ–‡ä»¶å¹¶ä»¥äºŒè¿›åˆ¶å†™å…¥å½¢å¼å†™å…¥å˜é‡
+    // ´ò¿ªÎÄ¼ş²¢ÒÔ¶ş½øÖÆĞ´ÈëĞÎÊ½Ğ´Èë±äÁ¿
     FILE *fp = fopen(filename, "wb");
     if (fp == NULL) {
-        printf("æ— æ³•æ‰“å¼€å¾…å†™å…¥æ–‡ä»¶\n");
+        printf("ÎŞ·¨´ò¿ª´ıĞ´ÈëÎÄ¼ş\n");
         return;
     }
     fwrite(&enterNum, sizeof(int), 1, fp);
@@ -45,13 +45,13 @@ void *timer_thread() {
     while (1) {
         time_t now = time(NULL);
         struct tm *local_time = localtime(&now);
-        // å¦‚æœæ˜¯ 00:00 ç‚¹
+        // Èç¹ûÊÇ 00:00 µã
         if (local_time->tm_hour == 0 && local_time->tm_min == 0) {
             output();
-            printf("ä»Šæ—¥ç»Ÿè®¡æ•°æ®å·²ç»å¯¼å‡º\n");
+            printf("½ñÈÕÍ³¼ÆÊı¾İÒÑ¾­µ¼³ö\n");
             resetStatisticalData();
         }
-        // ç­‰å¾… 1 åˆ†é’Ÿ
+        // µÈ´ı 1 ·ÖÖÓ
         sleep(60);
     }
 }
@@ -59,7 +59,7 @@ void *timer_thread() {
 Data deserialize(char *filename) {
     FILE *fp = fopen(filename, "rb");
     if (!fp) {
-        fprintf(stderr, "æ‰“å¼€æ–‡ä»¶å¤±è´¥: %s\n", filename);
+        fprintf(stderr, "´ò¿ªÎÄ¼şÊ§°Ü: %s\n", filename);
         Data rs;
         rs.totalNum = -1;
         return rs;

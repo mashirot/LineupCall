@@ -5,7 +5,7 @@
 #include "util.h"
 
 void inform(char* phoneNum, char* tableType, int tableId) {
-    printf("ã€å°±é¤é€šçŸ¥ã€‘äº²çˆ±çš„ %s, ä¹…ç­‰äº†, è¯·è¿›åº—å°±é¤, æ¡Œå‹: %s, æ¡Œå·: %d\n", phoneNum + 7, tableType, tableId);
+    printf("¡¾¾Í²ÍÍ¨Öª¡¿Ç×°®µÄ %s, ¾ÃµÈÁË, Çë½øµê¾Í²Í, ×ÀĞÍ: %s, ×ÀºÅ: %d\n", phoneNum + 7, tableType, tableId);
 }
 
 int isValidPhoneNumber(char* phoneNumber) {
