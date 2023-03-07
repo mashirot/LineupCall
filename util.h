@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 int isValidPhoneNumber(char* phoneNumber);
 void inform(char* phoneNum, char* tableType, int tableId);
+int isValidDateRange(char* files, int start, int end);
 #endif //LINEUPCALL_UTIL_H

@@ -110,8 +110,8 @@ int generateId(int type, void *queue) {
 
 void releaseTable(int sNum, int mNum, int lNum) {
     sNum = sNum < SMALL_TABLE_QUEUE.size ? sNum : SMALL_TABLE_QUEUE.size;
-    mNum = mNum < SMALL_TABLE_QUEUE.size ? mNum : SMALL_TABLE_QUEUE.size;
-    lNum = lNum < SMALL_TABLE_QUEUE.size ? lNum : SMALL_TABLE_QUEUE.size;
+    mNum = mNum < MID_TABLE_QUEUE.size ? mNum : MID_TABLE_QUEUE.size;
+    lNum = lNum < LARGE_TABLE_QUEUE.size ? lNum : LARGE_TABLE_QUEUE.size;
     for (int i = 0; i < sNum; i++) {
         poll(&SMALL_TABLE_QUEUE);
     }
