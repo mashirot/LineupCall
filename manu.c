@@ -109,7 +109,33 @@ void managePage() {
                     break;
                 }
 
+                printf("目前有 %d 天的统计数据, 分别是：\n", fileCount);
                 for (int i = 0; i < fileCount; i++) {
+                    printf("%d: %s", i + 1, files[i]);
+                    if (i + 1 < fileCount) {
+                        printf(", ");
+                    }
+                    if (i > 0 && i / 5 == 0) {
+                    }
+                }
+                printf("\n");
+                int start = 0;
+                int end = fileCount;
+                while (1) {
+                    printf("请输入时间段的序号(连续), 格式: 1, 2\n");
+                    scanf("%d, %d", &start, &end);
+                    int cache;
+                    while ((cache = getchar()) != '\n' && cache != EOF);
+                    if (start >= 1 && end <= fileCount && start >= end){
+                        --start;
+                        if (isValidDateRange(*files, start, end)) {
+                            break;
+                        }
+                    }
+                    printf("格式错误，请重新输入\n");
+                }
+
+                for (int i = start; i < end; i++) {
                     char fileName[256];
                     sprintf(fileName, "%s/%s", path, files[i]);
                     FILE *fp = fopen(fileName, "rb");
@@ -138,6 +164,7 @@ void managePage() {
             }
             case 4: {
                 output();
+                break;
             }
             case 3: {
                 int sNum = 0;
@@ -153,6 +180,7 @@ void managePage() {
                     lNum = rand() % LARGE_TABLE_QUEUE.size;
                 }
                 releaseTable(sNum, mNum, lNum);
+                printf("清理了 小桌：%d, 中桌：%d, 大桌: %d\n", sNum, mNum, lNum);
             }
                 break;
             case 0:
