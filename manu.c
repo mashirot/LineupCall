@@ -33,7 +33,7 @@ void homePage() {
         printf("2. 候餐人数\n");
         printf("3. 管理后台\n");
         printf("0. 退出\n");
-        printf("###################################\n");
+        printf("######################################\n");
         int cmd = 0;
         scanf("%d", &cmd);
         switch (cmd) {
@@ -116,6 +116,7 @@ void managePage() {
                         printf(", ");
                     }
                     if (i > 0 && i / 5 == 0) {
+                        printf("\n");
                     }
                 }
                 printf("\n");
@@ -162,10 +163,6 @@ void managePage() {
                 getchar();
                 break;
             }
-            case 4: {
-                output();
-                break;
-            }
             case 3: {
                 int sNum = 0;
                 int mNum = 0;
@@ -183,6 +180,10 @@ void managePage() {
                 printf("清理了 小桌：%d, 中桌：%d, 大桌: %d\n", sNum, mNum, lNum);
             }
                 break;
+            case 4: {
+                output();
+                break;
+            }
             case 0:
                 return;
             default: {
