@@ -136,6 +136,8 @@ void managePage() {
                     printf("格式错误，请重新输入\n");
                 }
 
+                Data tempData;
+
                 for (int i = start; i < end; i++) {
                     char fileName[256];
                     sprintf(fileName, "%s/%s", path, files[i]);
@@ -147,16 +149,24 @@ void managePage() {
                     Data data;
                     fread(&data, sizeof(Data), 1, fp);
                     fclose(fp);
-//                    printf("%s:\n 进店人数: %d, 总人数: %d | 桌数 小桌: %d, 中桌: %d, 大桌: %d | 入座人数 小桌: %d, 中桌: %d, 大桌: %d | 上座率 小桌: %.2lf, 中桌: %.2lf, 大桌: %.2lf\n",
-                    printf("%s:\n 进店人数: %d, 总人数: %d | 上座率 小桌: %.2lf, 中桌: %.2lf, 大桌: %.2lf\n",
-                           files[i], data.enterNum, data.totalNum,
-                           data.smallTableNum == 0 ? 0 : data.smallTableEnterNum /
-                                                         (double) (data.smallTableNum * SMALL_TABLE_CAPACITY),
-                           data.midTableNum == 0 ? 0 : data.midTableEnterNum /
-                                                       (double) (data.midTableNum * MID_TABLE_CAPACITY),
-                           data.largeTableNum == 0 ? 0 : data.largeTableEnterNum /
-                                                         (double) (data.largeTableNum * LARGE_TABLE_CAPACITY));
+                    tempData.enterNum += data.enterNum;
+                    tempData.totalNum += data.totalNum;
+                    tempData.smallTableNum += data.smallTableNum;
+                    tempData.midTableNum += data.midTableNum;
+                    tempData.largeTableNum += data.largeTableNum;
+                    tempData.smallTableEnterNum += data.smallTableEnterNum;
+                    tempData.midTableEnterNum += data.midTableEnterNum;
                 }
+//                    printf("%s:\n 进店人数: %d, 总人数: %d | 桌数 小桌: %d, 中桌: %d, 大桌: %d | 入座人数 小桌: %d, 中桌: %d, 大桌: %d | 上座率 小桌: %.2lf, 中桌: %.2lf, 大桌: %.2lf\n",
+                printf("%s - %s\n", files[start], files[end - 1]);
+                printf(" 进店人数: %d, 总人数: %d | 上座率 小桌: %.2lf, 中桌: %.2lf, 大桌: %.2lf\n",
+                       tempData.enterNum, tempData.totalNum,
+                       tempData.smallTableNum == 0 ? 0 : tempData.smallTableEnterNum /
+                                                     (double) (tempData.smallTableNum * SMALL_TABLE_CAPACITY),
+                       tempData.midTableNum == 0 ? 0 : tempData.midTableEnterNum /
+                                                   (double) (tempData.midTableNum * MID_TABLE_CAPACITY),
+                       tempData.largeTableNum == 0 ? 0 : tempData.largeTableEnterNum /
+                                                     (double) (tempData.largeTableNum * LARGE_TABLE_CAPACITY));
                 printf("==========\n");
                 printf("0. 返回\n");
                 getchar();
@@ -258,9 +268,7 @@ void takeTokenPage() {
             offer(&LARGE_TABLE_USER_QUEUE, &customer, sizeof(Customer));
         default:
     }
-    char lastFourNum[4] = {};
-    strncpy(lastFourNum, &customer.phoneNumber[7], 0);
-    printf("亲爱的 %s, 您已取号成功, 请耐心等待, 前面还有 %d 桌\n", lastFourNum, waitNum);
+    printf("亲爱的 %s, 您已取号成功, 请耐心等待, 前面还有 %d 桌\n", customer.phoneNumber + 7, waitNum);
     takeTable(customer.type);
     totalNum += customer.memNum;
 }
